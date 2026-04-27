@@ -13,6 +13,15 @@ class BasePage:
     def open(self, url):
         self.driver.get(url)
 
+    def get_current_url(self):
+        return self.driver.current_url
+
+    def get_window_handles(self):
+        return self.driver.window_handles
+
+    def switch_to_window(self, window):
+        self.driver.switch_to.window(window)
+
     def find_element(self, locator):
         return WebDriverWait(self.driver, self.timeout).until(
             EC.presence_of_element_located(locator)

@@ -15,18 +15,21 @@ class TestRedirects:
         main_page.click_scooter_logo()
 
         main_page.wait_url_contains('qa-scooter.praktikum-services.ru')
-        assert driver.current_url == MainPage.BASE_URL
+        assert main_page.get_current_url() == MainPage.BASE_URL
 
     @allure.title('Переход на главную страницу Дзена по логотипу Яндекса')
     def test_yandex_logo_opens_dzen_in_new_window(self, driver):
         main_page = MainPage(driver)
         main_page.open_main_page()
-        old_windows = driver.window_handles
+        old_windows = main_page.get_window_handles()
 
         main_page.click_yandex_logo()
         main_page.wait_new_window_opened(old_windows)
-        new_window = [window for window in driver.window_handles if window not in old_windows][0]
-        driver.switch_to.window(new_window)
+        
+        new_windows = main_page.get_window_handles()
+        new_window = [window for window in new_windows if window not in old_windows][0]
 
+        main_page.switch_to_window(new_window)
         main_page.wait_url_contains('dzen.ru')
-        assert 'dzen.ru' in driver.current_url
+
+        assert 'dzen.ru' in main_page.get_current_url()

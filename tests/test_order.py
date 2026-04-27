@@ -3,35 +3,7 @@ import pytest
 
 from pages.main_page import MainPage
 from pages.order_page import OrderPage
-
-
-ORDER_DATA = [
-    {
-        'entry_point': 'top',
-        'first_name': 'Иван',
-        'last_name': 'Петров',
-        'address': 'Москва, улица Ленина, 1',
-        'metro_station': 'Сокольники',
-        'phone': '+79991234567',
-        'date': '30.04.2026',
-        'rent_period': 'сутки',
-        'color': 'black',
-        'comment': 'Позвонить за час',
-    },
-    {
-        'entry_point': 'bottom',
-        'first_name': 'Анна',
-        'last_name': 'Смирнова',
-        'address': 'Москва, Тверская улица, 10',
-        'metro_station': 'Черкизовская',
-        'phone': '+79997654321',
-        'date': '01.05.2026',
-        'rent_period': 'двое суток',
-        'color': 'grey',
-        'comment': 'Оставить у подъезда',
-    },
-]
-
+from data import FAQ_DATA, ORDER_DATA
 
 @allure.epic('Яндекс.Самокат')
 @allure.feature('Заказ самоката')
